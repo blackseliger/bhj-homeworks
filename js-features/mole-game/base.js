@@ -20,3 +20,24 @@
 
   next();
 })();
+
+const dead = document.getElementById("dead");
+const lost = document.getElementById("lost");
+const status = document.getElementById("status");
+status.onclick = function() {
+    for ( let i = 0; i < 9; i++) {
+      if (getHole(index).className.includes( `hole_has-mole` )) {
+        dead.textContent++;
+      } else {
+        lost.textContent++;
+        if ( lost.textContent >= 5) {
+          alert ("Вы проиграли");
+          break;
+        } 
+      } 
+    }
+    if (dead.textContent === 10) {
+      alert("Вы выиграли");
+    } 
+}
+
