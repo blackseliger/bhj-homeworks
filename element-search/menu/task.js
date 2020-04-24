@@ -1,35 +1,65 @@
-{/* <li class="menu__item">
-            <a href="https://netology.ru/" class="menu__link">Главная</a>
-        </li> */}
 
 
-let menu__link = document.querySelectorAll(".menu__link");
-let menu_sub = document.querySelectorAll(".menu_sub");
-let menu__item = document.querySelectorAll(".menu__item");
-// let menu__linkArr = Array.from(menu__link);
-// let menu_subArr = Array.from(menu_sub);
-let menu_subArr = menu_sub.item(0);
-let menuLinkArr1 = menu__link.item(0);
-let menuLinkArr2 = menu__link.item(1);
-let menuLinkArr3 = menu__link.item(2);
-let menuLinkArr4 = menu__link.item(3);
 
-menuLinkArr3.onclick = function(){
-   if (menu_subArr.closest("li")) {
-       alert('Получилось');
-      menu_subArr.classList.add("menu_active"); 
-   };
-alert('Получилось 2 вариант')
-return false;
+// const menu_sub = Array.from(document.querySelectorAll("li.menu__item > ul"));
+// // воспользовались >  нахождения ul menu menu sub. 
+// const menu_link = Array.from(document.querySelectorAll("li.menu__item > a"));
+// // аналогично с ссылкой работаем
+
+// menu_link[1].onclick = function(){
+//     menu_sub[1].className = "menu menu_sub menu active";
+//     menu_sub[2].className = "menu menu_sub"
+//     return false;
+// }
+
+
+const menuSub = Array.from(document.querySelectorAll('li.menu__item > ul'));
+const menuItems = Array.from(document.querySelectorAll('li.menu__item > a'));
+
+let closedMenu = function(){
+    for ( let i = 0; i< menuSub.length; i++) {
+        menuSub[i].classList.remove("menu_active");
     }
+}
+
+for ( let i = 0; i < menuItems.length; i++){   
+        if (menuItems[menuItems.length - 1] || menuItems[menuItems.length - menuItems.length]) {
+            menuItems[menuItems.length - 1].onclick = function() {
+                alert("Провека 2");
+                closedMenu();
+                return false;
+            }
+            menuItems[menuItems.length - menuItems.length].onclick = function(){
+                alert("Проверка 3");
+                closedMenu();
+                return false;
+            }
+        
+        } 
+
+        menuItems[i].onclick = function(){
+            alert('Провека 1')
+            for ( let i = 0; i < menuSub.length; i++){
+                  if (menuSub[i]) {
+                      menuSub[i].className = "menu menu_sub menu_active";
+                    
+                  }
+            }
+        }
 
 
-// Здравствуйте! У меня возникла проблема с присвоением кнопок на вкладки
-// с 12 до 15 строки выделил каждую переменную, под каждую кнопку: Главная, О компании, Услуги, Контакты. Позже понял что это неверно
-// Думаю тут нужно пользоваться Array.from, но после того как пишу эту команду  9 и 10 строка
-// я их не могу использовать с командой onclick. Пожалуйста, скажите на что обратить внимание
-// Так же, при нажатии на кнопку, любую из вкладок, она должна либо открывать меню либо переходить по ссылке
-// с 18 по 20 строку, пытался реализовать эту команду. Но работает так же неверно. 
+    } 
 
 
+
+// menuItems[1].onclick = function() {
+// 	menuSub[0].className = "menu menu_sub menu_active";
+// 	menuSub[1].className = "menu menu_sub";
+// 	return false;
+// }
+// menuItems[5].onclick = function() {
+// 	menuSub[1].className = "menu menu_sub menu_active";
+// 	menuSub[0].className = "menu menu_sub";
+// 	return false;
+// }
 
