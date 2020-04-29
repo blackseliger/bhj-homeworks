@@ -22,15 +22,16 @@ let closedMenu = function(){
     }
 }
 
+
 for ( let i = 0; i < menuItems.length; i++){   
         if (menuItems[menuItems.length - 1] || menuItems[menuItems.length - menuItems.length]) {
             menuItems[menuItems.length - 1].onclick = function() {
-                alert("Провека 2");
+                console.log("Провека 2");
                 closedMenu();
                 return false;
             }
             menuItems[menuItems.length - menuItems.length].onclick = function(){
-                alert("Проверка 3");
+                console.log("Проверка 3");
                 closedMenu();
                 return false;
             }
@@ -38,17 +39,15 @@ for ( let i = 0; i < menuItems.length; i++){
         } 
 
         menuItems[i].onclick = function(){
-            alert('Провека 1')
-            for ( let i = 0; i < menuSub.length; i++){
-                  if (menuSub[i]) {
-                      menuSub[i].className = "menu menu_sub menu_active";
-                    
-                  }
-            }
+            console.log('Провека 1')
+            menuSub[i].className = "menu menu_sub menu_active";
         }
 
 
     } 
+
+    
+
 
 
 

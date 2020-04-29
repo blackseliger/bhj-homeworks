@@ -28,19 +28,27 @@ const modal__close_times = document.getElementsByClassName("modal__close_times")
     return false;
 }
 
+
+    // let closeModal = function(){
+    //     this.closest(".modal").className = "modal modal_close";
+    // }
+
+
+
     modal__close_timesArr.onclick = function(){
-    alert("проверка 1");
-    modal_main.className = "modal modal_close";
+    // closeModal();
+    this.closest(".modal").className = "modal modal_close";
     
 }
 
     modal__close_timesArr1.onclick = function(){
-    alert("проверка 2");
-    modal_success.className = "modal modal_close"; 
+        this.closest(".modal").className = "modal modal_close";
+        // closeModal();   То что хотел изначально сделать
 }
 
-// Здравствуйте! Пожалуйста скажите, какой метод нужно использовать, чтоб "крестик" элемент с классом 
-// <div class="modal__close modal__close_times">&times;</div> можно было засунуть в одну функцию onclick?
-// Сейчас написано две одинаковые функции  modal__close_timesArr.onclick и modal__close_timesArr1.onclick
-// основная причина, как понимаю, это вывод обращение к псевдомассиву через метод item(0) и item(1);
-// Как сделать чтоб сразу ко всем элементам можно было обратиться? 
+
+// Обновил код
+// Я пытался написать сначала функцию 32-34 строка и вставить ее в функции обработчки
+// но вылетала ошибка task.js:33 Uncaught TypeError: this.closest is not a function 
+// и совсем не знаю как ее решить. По задумке, я хочу чтоб она работала в каждой функции обработчик
+// но this работает только с областью функции closemodal. 
