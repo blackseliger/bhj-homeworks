@@ -23,35 +23,46 @@ let closedMenu = function(){
 }
 
 
-for ( let i = 0; i < menuItems.length; i++){   
-        if (menuItems[menuItems.length - 1] || menuItems[menuItems.length - menuItems.length]) {
-            menuItems[menuItems.length - 1].onclick = function() {
-                console.log("Провека 2");
-                closedMenu();
-                return false;
-            }
-            menuItems[menuItems.length - menuItems.length].onclick = function(){
-                console.log("Проверка 3");
-                closedMenu();
-                return false;
-            }
+// for ( let i = 0; i < menuItems.length; i++){   
+//         if (menuItems[menuItems.length] || menuItems[menuItems.length - menuItems.length]) {
+//             menuItems[menuItems.length - 1].onclick = function() {
+//                 console.log("Провека 3");
+//                 // closedMenu();
+//                 return false;
+//             }
+//             menuItems[menuItems.length - menuItems.length].onclick = function(){
+//                 console.log("Проверка 1");
+//                 // closedMenu();
+//                 return false;
+//             }
         
-        } 
+//         } 
 
+//             menuItems[i].onclick = function(){
+//             console.log('Провека 2')
+//             // menuSub[i].className = "menu menu_sub menu_active";
+//             return false;
+//         }
+// }
+
+    for ( let i = 0; i < menuItems.length; i++){
         menuItems[i].onclick = function(){
-            console.log('Провека 1')
-            menuSub[i].className = "menu menu_sub menu_active";
+            if (this.closest("li").querySelector("ul")){
+                this.closest('li').querySelector("ul").classList.add("menu_active"); 
+                return false;
+            }
+            console.log('fff')
+            return false;
         }
-
-
-    } 
-
-    
+    }
 
 
 
 
-// menuItems[1].onclick = function() {
+
+
+
+    // menuItems[1].onclick = function() {
 // 	menuSub[0].className = "menu menu_sub menu_active";
 // 	menuSub[1].className = "menu menu_sub";
 // 	return false;
