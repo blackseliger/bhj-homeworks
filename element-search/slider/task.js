@@ -51,3 +51,10 @@ slider_dots.forEach( function (element){
         }
 })
 
+
+// slider_dots.map( function (element){
+//     slider_item.map (function (items){
+//          return element = items;
+//     })
+// })
+
