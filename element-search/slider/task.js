@@ -5,13 +5,20 @@ let slider_dots = [...document.querySelectorAll(".slider__dot")]
 let number = 0;
 
 let deactivateArrow = function(){
-    slider_item.forEach((element) => {
-        if (element.classList.contains("slider__item_active")){
-            element.classList.remove("slider__item_active")
-        }
-    })
-        slider_item[number].classList.add("slider__item_active")  
-}
+    
+    console.log(slider_item.findIndex( (item) => {
+        item.classList.contains("slider__item_active");
+    }))
+};
+    
+
+    // slider_item.forEach((element) => {
+    //     if (element.classList.contains("slider__item_active")){
+    //         element.classList.remove("slider__item_active")
+    //     }
+    // })
+    //     slider_item[number].classList.add("slider__item_active")  
+
 
 
 slider_arrow.forEach( function(element){
