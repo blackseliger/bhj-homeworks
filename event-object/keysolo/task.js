@@ -17,21 +17,18 @@ class Game {
   }
 
   registerEvents() {
-    let currentSymbol = this.currentSymbol;
-    
-    function checkSymbols(e){
+    let checkSymbols = (e) => {
       e instanceof KeyboardEvent;
       let enteredSymbol = e.key;
-      
-      if (enteredSymbol.toLowerCase() === currentSymbol.textContent){
-        return this.success();
+      if (enteredSymbol.toLowerCase() === this.currentSymbol.textContent){
+        this.success();
       } else {
-        return this.fail();
+        this.fail();
       }
       
     }
 
-    document.addEventListener(`keypress`, checkSymbols);
+    document.addEventListener(`keyup`, checkSymbols);
 
     /*
       TODO:
