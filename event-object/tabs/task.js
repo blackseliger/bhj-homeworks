@@ -1,4 +1,4 @@
-// let tab_navigation = [...document.querySelectorAll(".tab__navigation")];
+
 let tabs = [...document.querySelectorAll(".tab")];
 let tab_content = [...document.querySelectorAll(".tab__content")];
 
