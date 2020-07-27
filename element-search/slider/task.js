@@ -4,19 +4,9 @@ let slider_dots = [...document.querySelectorAll(".slider__dot")]
 
 let number = 0;
 
-let deactivateArrow = function(){    
-   let index = slider_item.findIndex( (item) => {
-        return item.classList.contains("slider__item_active");
-    })
     
-    slider_item[index].classList.remove("slider__item_active");
-    if (slider_item[number]){
-    slider_item[number].classList.add("slider__item_active");
-    };
-};
-    
-let deactivateSlide = () => {
-    let slideIndex = slider_item.findIndex( function (slide){
+let deactivateSlide = () => {   // проверяет на наличие активных слайдов и точек
+    let slideIndex = slider_item.findIndex( slide => {
         return slide.classList.contains("slider__item_active")
     })
 
@@ -24,30 +14,19 @@ let deactivateSlide = () => {
         slider_item[slideIndex].classList.remove("slider__item_active");
         slider_dots[slideIndex].classList.remove("slider__dot_active");
     };
-
-
 }
 
-let activateSlide = () => {
+let activateSlide = () => {  // активирует точку и слайд
     slider_item[number].classList.add("slider__item_active");
     slider_dots[number].classList.add("slider__dot_active");
 }
 
-let deactivateDot = function(){
-    let dotIndex = slider_dots.findIndex( function (dot){
-        return dot.classList.contains("slider__dot_active");
-    });
-    
-    if (dotIndex >= 0){
-        slider_dots[dotIndex].classList.remove("slider__dot_active");
-    };
-}
 
     slider_arrow.forEach( function (arrow){
         arrow.onclick = function(){
             if (arrow.classList.contains("slider__arrow_next")){
                 number++
-                if (number < slider_item.length){
+                if (number < slider_item.length){   
                     deactivateSlide();
                     activateSlide();
             } else if (number = slider_item.length) {
@@ -74,16 +53,16 @@ let deactivateDot = function(){
 slider_dots.forEach( function (dot){
     dot.onclick = function(){
         
-        deactivateDot();
-        deactivateSlide();
+        deactivateSlide(); // деактивирует точку и слайд которые активны
         
-        dot.classList.add("slider__dot_active");
-        let dotIndex = slider_dots.findIndex( function (dot){
+        dot.classList.add("slider__dot_active"); 
+        let dotIndex = slider_dots.findIndex( dot => {
             return dot.classList.contains("slider__dot_active");
         })
         slider_item[dotIndex].classList.add("slider__item_active");
-        
+        number = dotIndex;  
+        // cвязал номер слайда с номером точки. Раньше нумирация была только если стрелками слайды менять.
 
     }
-})
+});
 

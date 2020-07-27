@@ -17,16 +17,12 @@ menu_link.forEach(function (element) {
                 let elementClass = element.closest("li").querySelector("ul");
                 if (elementClass === null){
                         menuSubDeactivate();
-                        console.log(`wotktrk`);
-                        return false;
                 } else if (elementClass){
-                        console.log(elementClass);
                         if (elementClass.classList.contains("menu_active")){
                                 elementClass.classList.remove("menu_active");
-                        }
-
+                        } else { 
                         menuSubDeactivate();
-                        elementClass.classList.add("menu_active");
+                        elementClass.classList.add("menu_active");}
                         return false;
                 };
         };
