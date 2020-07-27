@@ -6,9 +6,9 @@ let number = 0;
 
     
 let deactivateSlide = () => {   // проверяет на наличие активных слайдов и точек
-    let slideIndex = slider_item.findIndex( slide => {
-        return slide.classList.contains("slider__item_active")
-    })
+    let slideIndex = slider_item.findIndex( slide => (
+        slide.classList.contains("slider__item_active")
+    ));
 
     if (slider_item[slideIndex]){
         slider_item[slideIndex].classList.remove("slider__item_active");
@@ -56,9 +56,9 @@ slider_dots.forEach( function (dot){
         deactivateSlide(); // деактивирует точку и слайд которые активны
         
         dot.classList.add("slider__dot_active"); 
-        let dotIndex = slider_dots.findIndex( dot => {
-            return dot.classList.contains("slider__dot_active");
-        })
+        let dotIndex = slider_dots.findIndex( dot => (
+            dot.classList.contains("slider__dot_active")
+        ));
         slider_item[dotIndex].classList.add("slider__item_active");
         number = dotIndex;  
         // cвязал номер слайда с номером точки. Раньше нумирация была только если стрелками слайды менять.
