@@ -4,6 +4,9 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    // таймер
+    this.time = document.querySelector(".timer");
+    
 
     this.reset();
 
@@ -16,10 +19,13 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
+
   registerEvents() {
     let checkSymbols = (e) => {
       e instanceof KeyboardEvent;
       let enteredSymbol = e.key;
+      this.time.textContent = [...this.wordElement.querySelectorAll(".symbol")].length;
+    
       if (enteredSymbol.toLowerCase() === this.currentSymbol.textContent){
         this.success();
       } else {
@@ -27,6 +33,16 @@ class Game {
       }
       
     }
+
+    let timer = () => (
+      this.time.textContent--
+    );
+    
+    let id = setInterval(timer, 1000);
+    if (this.time.textContent < 0){
+      clearInterval(id);
+      console.log(`время вышло`);
+    };
 
     document.addEventListener(`keyup`, checkSymbols);
 
