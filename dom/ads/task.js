@@ -16,6 +16,7 @@ let activatedAds = () => {
     // console.log(rotator_case[number].dataset.speed); // обращаюсь к скорости и цвету 
     // console.log(rotator_case[number].dataset.color);
     let color = rotator_case[number].dataset.color;
+    rotator_case[number].classList.add(`color_${color}`);
     console.log(color);
     rotator_case[number].style = `${color}`;
     rotator_case[number].setAttribute(`data-color` , `${color}`);
