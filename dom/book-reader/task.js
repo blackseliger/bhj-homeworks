@@ -1,4 +1,8 @@
 let fontSize = [...document.querySelectorAll(`.font-size`)];
+let textcolor = [...document.querySelectorAll(`.color`)];
+let backgroundColor = [...document.querySelectorAll(`.color`)];
+let book = document.querySelector(`.book`);
+
 
 let isBig = () => {
     if (book.classList.contains("book_fs-big")){
@@ -13,10 +17,10 @@ let isSmall = () => {
 }
 
 
+
 let changeSize = (e) => {
     e.preventDefault();
     let currentElement = e.currentTarget;
-    let book = currentElement.closest(`.book`);
     let activatedFS = currentElement.closest(".book__control").querySelector(`.font-size_active`);
     
     if (activatedFS){
@@ -41,3 +45,70 @@ fontSize.forEach( element => {
     element.addEventListener(`click`, changeSize);
 })
 
+// доп. CT - colorText
+
+let defualtTC = () => {
+    if (book.classList.contains("book_color-gray")){
+        book.classList.remove("book_color-gray");
+    } else if (book.classList.contains ("book_color-whitesmoke")){
+        book.classList.remove("book_color-whitesmoke");
+    };
+};
+
+
+
+let changeColor = (e) => {
+    e.preventDefault();
+    let currentElement = e.currentTarget;
+    let activatedCT = currentElement.closest(".book__control_color").querySelector(`.color_active`);
+
+    if (activatedCT){
+        activatedCT.classList.remove("color_active");
+    };
+
+    currentElement.classList.add(`color_active`);
+    if (currentElement.dataset.color){
+        defualtTC();
+        book.classList.add(`book_color-${currentElement.dataset.color}`);
+    } else {
+        defualtTC();
+    }
+
+}
+
+textcolor.forEach( element => {
+    element.addEventListener(`click`, changeColor);
+})
+
+//  доп фон CB - colorBackground
+
+defaultCB = () => {
+    if (book.classList.contains("book_bg-gray")){
+        book.classList.remove("book_bg-gray");
+    } else if (book.classList.contains("book_bg-black")){
+        book.classList.remove("book_bg-black");
+    };
+};
+
+let changeBackGroundColor = (e) =>{
+    e.preventDefault();
+    let currentElement = e.currentTarget;
+    let activatedCB = currentElement.closest(`.book__control_background`).querySelector(`.color_active`); 
+
+    if (activatedCB) {
+        activatedCB.classList.remove("color_active");
+    };
+
+    currentElement.classList.add(`color_active`);
+    console.log(currentElement.dataset.color);
+    if (currentElement.dataset.color){
+        defaultCB();
+        book.classList.add(`book_bg-${currentElement.dataset.color}`);
+    } else {
+        defaultCB();
+    };
+};
+
+backgroundColor.forEach( element => {
+    element.addEventListener(`click`, changeBackGroundColor);
+})
