@@ -24,7 +24,6 @@ class Game {
     let checkSymbols = (e) => {
       e instanceof KeyboardEvent;
       let enteredSymbol = e.key;
-      this.time.textContent = [...this.wordElement.querySelectorAll(".symbol")].length;
     
       if (enteredSymbol.toLowerCase() === this.currentSymbol.textContent){
         this.success();
@@ -34,15 +33,14 @@ class Game {
       
     }
 
-    let timer = () => (
+    let timer = () => {
       this.time.textContent--
-    );
+      if (this.time.textContent < 0){
+        this.fail();
+      }
+    }
     
     let id = setInterval(timer, 1000);
-    if (this.time.textContent < 0){
-      clearInterval(id);
-      console.log(`время вышло`);
-    };
 
     document.addEventListener(`keyup`, checkSymbols);
 
@@ -112,6 +110,7 @@ class Game {
     this.wordElement.innerHTML = html;
 
     this.currentSymbol = this.wordElement.querySelector('.symbol_current');
+    this.time.textContent = [...this.wordElement.querySelectorAll(".symbol")].length;
   }
 }
 
