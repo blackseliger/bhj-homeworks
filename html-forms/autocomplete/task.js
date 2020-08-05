@@ -68,7 +68,22 @@ class Autocomplete {
   }
 
   getMatches( text ) {
+    
+    // let inputArr = [];
+    let {options} = this.input;
+    for (let prop in options){
+      if (options[prop].text === text){
+        return [
+          {
+          text: options[prop].text,
+          value: options[prop].value
+          }
+        ];
+      };
+    }
     /*
+
+    
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
       Метод должен вернуть массив.
