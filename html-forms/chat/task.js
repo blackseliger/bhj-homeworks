@@ -23,10 +23,7 @@ let listAnswers = [
 let onInput = (e) => {
     let text = e.target.value
     if (!(text === null)){
-    document.addEventListener(`keyup`, (e) => {
-        console.log(text);
-        if (e.key === `Enter`){
-            let hours = new Date().getHours();
+        let hours = new Date().getHours();
             let minutes = new Date().getMinutes();
             let seconds = new Date().getSeconds();
             let clock = `${hours}:${minutes}:${seconds}`
@@ -39,12 +36,9 @@ let onInput = (e) => {
             <div class="message__time">${clock}</div>
             <div class="message__text">${listAnswers[indexAnswer]}</div>
         </div>`
-             
-            
-        };
-    });
-};
+    }
 }
+
 
 
 
