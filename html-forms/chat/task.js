@@ -14,14 +14,15 @@ chat_widget.addEventListener(`click`, (e) => {
 let listAnswers = [
     `Хорошего дня`, `Каратин, мы банкроты`, `Мы закрыты`, `Вон отсюда`, `Где тут дрын какой нибудь`, `Лютик, ты где`
 ];
-
+// список для рандомных ответов
 
 
 
 
 
 let onInput = (e) => {
-    let text = e.target.value
+    let text = e.target.value.trim();
+    console.log(chat_widget_input.value.trim());
     if (!(text === null)){
         let hours = new Date().getHours();
             let minutes = new Date().getMinutes();
@@ -31,13 +32,13 @@ let onInput = (e) => {
             <div class="message__time">${clock}</div>
             <div class="message__text">${text}</div>
         </div>`
-        let indexAnswer = Math.floor(Math.random() * ((listAnswers.length -1) - 0 + 1)) + 0;
+        let indexAnswer = Math.floor(Math.random() * ((listAnswers.length -1)+ 1));
             messages.innerHTML += `<div class="message">
             <div class="message__time">${clock}</div>
             <div class="message__text">${listAnswers[indexAnswer]}</div>
         </div>`
-    }
-}
+    };
+};
 
 
 
@@ -46,8 +47,7 @@ let onInput = (e) => {
 chat_widget_input.addEventListener(`change`, onInput);
 
 
-// проблема с пробелом
-// проблема с повторением отправки
+// проблема с пробелом в начале
 
 
 
