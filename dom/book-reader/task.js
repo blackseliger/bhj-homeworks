@@ -1,6 +1,6 @@
 let fontSize = [...document.querySelectorAll(`.font-size`)];
-let textcolor = [...document.querySelectorAll(`.color`)];
-let backgroundColor = [...document.querySelectorAll(`.color`)];
+let textcolor = [...document.querySelector(`.book__control_color`).querySelectorAll(`.color`)];
+let backgroundColor = [...document.querySelector(`.book__control_background`).querySelectorAll(`.color`)];
 let book = document.querySelector(`.book`);
 
 
