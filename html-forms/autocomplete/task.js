@@ -72,42 +72,33 @@ class Autocomplete {
     let {options, value, selectedIndex} = this.input;
       
     for (let prop in options){
-      if ((options[prop].text === text) && !(options[prop].text === undefined)){
-        console.log(options[prop].text)
-        console.log(options[prop].value);
-        return inputArr.unshift({
+      if (typeof options[prop].text === `string` && (options[prop].text.includes(`${text}`) === true)){
+        inputArr.splice(0, inputArr.length, {
           text: options[prop].text,
           value: options[prop].value
         });
+      } else if (!(options[prop].text === undefined)){
+        inputArr.push({
+          text: options[prop].text,
+          value: options[prop].value
+        })
       }
     }
 
-    //   if (options.text){
-    //     console.log(value);
-    //     console.log(selectedIndex);
-    //     return [
-    //       {
-    //       text: options[prop].text,
-    //       value: options[prop].value
-    //       }
-    //     ];
-    //   };
-    // }
-    /*
+      return inputArr;
+      // TODO: этот метод нужно дописать
+      // text - фраза, которую вводят в поле поиска
+      // Метод должен вернуть массив.
 
-    
-      TODO: этот метод нужно дописать
-      text - фраза, которую вводят в поле поиска
-      Метод должен вернуть массив.
+      // Он формируется на основе списка опций select-элемента (this.input)
+      // Подходящие опции - те, чей текст содержит то, что есть в аргументе text
+      // Необходимо вернуть массив объектов со свойствами:
+      // {
+      //   text: 'Содержимое <option>',
+      //   value: 'Содержимое атрибута value'
+      // }
 
-      Он формируется на основе списка опций select-элемента (this.input)
-      Подходящие опции - те, чей текст содержит то, что есть в аргументе text
-      Необходимо вернуть массив объектов со свойствами:
-      {
-        text: 'Содержимое <option>',
-        value: 'Содержимое атрибута value'
-      }
-    */
+
     return [
       {
         text: 'Чубакка',
