@@ -68,19 +68,32 @@ class Autocomplete {
   }
 
   getMatches( text ) {
-    
-    // let inputArr = [];
-    let {options} = this.input;
+    let inputArr = [];
+    let {options, value, selectedIndex} = this.input;
     for (let prop in options){
-      if (options[prop].text === text){
-        return [
-          {
+      console.log(prop)
+      console.log(options[prop].text);
+      console.log(options[prop].value)
+      console.log(options)
+      if (options[prop].text.includes(`${text}`)){
+        inputArr.push({
           text: options[prop].text,
           value: options[prop].value
-          }
-        ];
-      };
+        });
+      }
     }
+
+    //   if (options.text){
+    //     console.log(value);
+    //     console.log(selectedIndex);
+    //     return [
+    //       {
+    //       text: options[prop].text,
+    //       value: options[prop].value
+    //       }
+    //     ];
+    //   };
+    // }
     /*
 
     
