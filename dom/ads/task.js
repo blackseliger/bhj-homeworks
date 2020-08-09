@@ -17,20 +17,14 @@ let activatedAds = () => {
     // console.log(rotator_case[number].dataset.color);
     let color = rotator_case[number].dataset.color;
     rotator_case[number].style.color = `${color}`;
-    rotator_case[number].classList.add(`color_${color}`);
-    console.log(color);
-    rotator_case[number].style = `${color}`;
-    rotator_case[number].setAttribute(`data-color` , `${color}`);
-    rotator_case[number].setAttribute(`color`, `${color}`);
-    rotator_case[number].classList.add(`${color}`)
-    // rotator_case[number].classList.add(rotator_case[number].dataset.color);
 };
 
 
 let number = 0;
 
 let timer = () => {
-    let changeAds = () => {
+
+    let timerId = setTimeout( function changeAds(){
         number++;
         if (number < rotator_case.length){
             deactivatedAds();
@@ -40,10 +34,11 @@ let timer = () => {
             deactivatedAds();
             activatedAds();
     };
-    };
-
-    setInterval(changeAds, rotator_case[number].dataset.speed);  
-    // назначил скорость
+        timerId = setTimeout(changeAds, rotator_case[number].dataset.speed)
+    }, rotator_case[number].dataset.speed);
+    // setTimeout(changeAds, rotator_case[number].dataset.speed);   
+    // назначил скорость, использовал рекурсию
+    // рекурсия https://learn.javascript.ru/settimeout-setinterval
 };
 
 rotator_case.forEach( rotator => {
