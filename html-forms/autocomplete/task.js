@@ -70,13 +70,12 @@ class Autocomplete {
   getMatches( text ) {
     let inputArr = [];
     let {options, value, selectedIndex} = this.input;
+      
     for (let prop in options){
-      console.log(prop)
-      console.log(options[prop].text);
-      console.log(options[prop].value)
-      console.log(options)
-      if (options[prop].text.includes(`${text}`)){
-        inputArr.push({
+      if ((options[prop].text === text) && !(options[prop].text === undefined)){
+        console.log(options[prop].text)
+        console.log(options[prop].value);
+        return inputArr.unshift({
           text: options[prop].text,
           value: options[prop].value
         });
