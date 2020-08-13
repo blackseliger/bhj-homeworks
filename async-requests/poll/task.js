@@ -1,6 +1,7 @@
 let pollAnswer = [...document.querySelectorAll(`.poll__answer`)];
 let pollTitle = document.querySelector(`.poll__title`);
-let pollAnswers = document.querySelector(`.poll__answer`);
+let pollAnswers = document.querySelector(`.poll__answers`);
+
 
 pollAnswer.forEach(element => {
     element.addEventListener(`click`, e => {
@@ -23,30 +24,38 @@ pollAnswer.forEach(element => {
                 }
                 let titleValue = arrDataValues[index(`title`)];
                 let answersValue = arrDataValues[index(`answers`)];
+                console.log(answersValue);
                 pollTitle.innerText = titleValue;
+                let checkActualArrPollAnswer = document.querySelectorAll(`.poll__answer`)
 
-                console.log(`${answersValue.length}, ${pollAnswer.length} `)
-
-                if (answersValue.length > pollAnswer.length){
-                    let difference = answersValue.length - pollAnswer.length
+                if (answersValue.length > checkActualArrPollAnswer.length){
+                    console.log(`${answersValue.length} > ${checkActualArrPollAnswer.length}`);
+                    let difference = answersValue.length -  checkActualArrPollAnswer.length;
+                    console.log(difference);
+                    let clonePollAnswer = document.createElement(`button`);
+                    clonePollAnswer.classList.add(`poll__answer`);
+                    
                     for (let i = 0; i < difference; i++){
-                        let pollAnswerCopy = pollAnswer[0].cloneNode(true); 
-                        pollAnswers.appendChild(pollAnswerCopy);
+                        // pollAnswers.appendChild(clonePollAnswer);
+                        pollAnswers.insertAdjacentHTML(`beforeend`, `<button class="poll__answer">
+                        Кто тут?
+                      </button>`)
+                        console.log(checkActualArrPollAnswer.length); //добавил элемент, но длина массива не изменилась
                     }
-                }   else if (answersValue.length < pollAnswer.length){
-                    let diff = pollAnswer.length - answersValue.length;
-                    console.log(diff);
-                    for (let i = pollAnswer.length - 1; i = answersValue.length; i--){
-                        pollAnswer[i].remove();
-                    };
-                }
-                    for (let i = 0; i < pollAnswer.length; i++){
-                        pollAnswer[i].innerText = answersValue[i];
+                }   else if (answersValue.length < checkActualArrPollAnswer.length){
+                    console.log(`${answersValue.length} < ${checkActualArrPollAnswer.length}`);
+                    for (let i = answersValue.length; i < checkActualArrPollAnswer.length; i++){
+                        checkActualArrPollAnswer.item(i).remove();
+                        console.log(checkActualArrPollAnswer.length); 
+                    } // тоже не изменяется длина массива. Самурай в поту, мысли роят в голове, не может понять сложную механику Джаваскрипта
+                };   
+                    for (let i = 0; i < checkActualArrPollAnswer.length; i++){
+                        checkActualArrPollAnswer[i].innerText = answersValue[i];
                     };
             } else {
                 console.log(xhr.readyState);
             }
         })
-        xhr.send(element);
+        xhr.send();
     })
 })
