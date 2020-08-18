@@ -1,21 +1,31 @@
 let modalCloseTimes = document.querySelector(`.modal__close_times`);
 let modal = document.querySelector(`.modal`);
 
-
+const getCookie = (name) => {
+    const value = "; " + document.cookie;  // Что делает эта строка? Функция вся взята из конспекта лекции
+    let parts = value.split("; " + name + "=");
+    if (parts.length === 2) {
+    return parts
+    .pop()
+    .split(";")
+    .shift();
+    }
+}
 
 document.addEventListener(`DOMContentLoaded`, e => {
-    console.log(document.cookie); // тоже ничего не показывает
+    let checkClass = getCookie(`modalView`);
+    if (checkClass.includes(`modal_active`) === false){
+        modal.classList.remove(`modal_active`);
+    }
 })
 
 
 modalCloseTimes.addEventListener(`click`, e => {
-    element = e.currentTarget;
     modal.classList.remove(`modal_active`);
-    console.log(modal.outerHTML);
-    console.log(modal);
-    document.cookie =`test1=CheckTest`;
-    document.cookie = `modalView=` + encodeURIComponent(modal.outerHTML);
-    alert(document.cookie); // ничего не показывает
+    let modalClass = modal.getAttribute(`class`);
+    if (modal.classList.contains(`modal_active`) === false){
+        document.cookie = `modalView=` + encodeURIComponent(modalClass);
+    };
 })
 
 
