@@ -25,7 +25,6 @@ tasksList.addEventListener(`click`, e => {
   let element = e.currentTarget;
   let elementX = e.clientX
   let elementY = e.clientY
-  console.log(`dont work`)
   let taskRemove = [...element.querySelectorAll(`.task__remove`)];
   counter = 0;
   taskRemove.forEach( taskR => {
