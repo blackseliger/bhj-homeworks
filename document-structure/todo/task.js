@@ -7,8 +7,8 @@ let tasks_remove = [];
 let counter = 0;
 
 tasksControl.addEventListener(`submit`, e => {
-  e.preventDefault(); // предотвратить перезагрузку страницы
-  element = e.target;
+  e.preventDefault();
+  let element = e.currentTarget;
   
   if (!(tasks_input.value === ``)){
   tasksList.insertAdjacentHTML(`beforeEnd`, `<div class="task">
@@ -17,39 +17,25 @@ tasksControl.addEventListener(`submit`, e => {
   </div>
   <a href="#" class="task__remove">&times;</a>
 </div> `)
-
-    let task_remove = [...document.querySelectorAll(`.task__remove`)];
-    task_remove = task_remove[counter]
-    counter++;
-    return tasks_remove.push(task_remove);
-  };
-
     element.reset();
+  };
 })
 
-for (let i = 0; i < tasks_remove.length; i++){
-  tasks_remove[i].addEventListener(`click`, e => {
-      e.preventDefault();
-      console.log(`its work`);
+tasksList.addEventListener(`click`, e => {
+  let element = e.currentTarget;
+  let elementX = e.clientX
+  let elementY = e.clientY
+  console.log(`dont work`)
+  let taskRemove = [...element.querySelectorAll(`.task__remove`)];
+  counter = 0;
+  taskRemove.forEach( taskR => {
+    let left = taskR.getBoundingClientRect().left
+    let bottom = taskR.getBoundingClientRect().bottom;
+    if ((elementX > left) && (elementY < bottom) && counter < 1){
+      taskR.closest(`.task`).remove();
+      counter++
+    } 
   })
-}
+});
 
-tasks_remove.forEach( element => {
-  element.addEventListener(`click`, e => {
-    e.preventDefault();
-    console.log(`its wotk`);
-  })
-})
-
-
-// task_remove.forEach( element => {
-//   element.addEventListener(`click`, e => {
-//     e.preventDefault();
-//     console.log(`its work`)
-//     element = e.currentTarget;
-//     let removeEl = element.closest(`.task`);
-//     console.log(removeEl);
-//   })
-// })
-
-
+// Выглядит слишком коряво, спросить есть ли лучше способ сделать задание
