@@ -5,7 +5,7 @@ let tooltip = document.querySelector(`.tooltip`);
 has_tooltip.forEach(el => {
   el.addEventListener(`click`, e => {
     e.preventDefault();
-    element = e.target;
+    element = e.currentTarget;
     let left = element.getBoundingClientRect().left;
     let top = element.getBoundingClientRect().bottom;
     let title = element.getAttribute(`title`);
@@ -19,7 +19,9 @@ has_tooltip.forEach(el => {
     tooltip.innerText = `${title}`;
     tooltip.style.top = `${top}px`;
     tooltip.style.left = `${left}px`;
-  
+
+    // let position = element.dataset.position;
+    // tooltip.dataset.position = `${position}: ${top}px`; не работает
 
   })
 })
