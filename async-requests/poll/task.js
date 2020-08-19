@@ -10,7 +10,7 @@ pollAnswers.addEventListener(`click`, e => {
         xhr.addEventListener(`readystatechange`, () => {
             if (xhr.readyState === 4 && xhr.status === 200){
                 let data = JSON.parse(xhr.responseText);
-                // alert(`Спасибо, ваш голос засчитан`)
+                alert(`Спасибо, ваш голос засчитан`)
                 
                 let arrDataKeys = Object.keys(data.data);
                 let arrDataValues = Object.values(data.data);
