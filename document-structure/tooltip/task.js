@@ -20,9 +20,6 @@ has_tooltip.forEach(el => {
     tooltip.style.top = `${top}px`;
     tooltip.style.left = `${left}px`;
 
-    // let position = element.dataset.position;
-    // tooltip.dataset.position = `${position}: ${top}px`; не работает
-
   })
 })
 
